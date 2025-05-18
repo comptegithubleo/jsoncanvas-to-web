@@ -12,6 +12,7 @@ A small Golang server `main.go` is used to serve the website. Remove if needed.
 ## Todo
 - Text in links
 - Nicer bezier curves
+- Start with everything centered
 - Side UI tutorial (pan + zoom instructions)
 - ...
 
