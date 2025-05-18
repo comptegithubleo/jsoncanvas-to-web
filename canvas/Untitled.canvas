@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"e8de68a2dbc3b19a","type":"text","text":"a long message oiaj faoifefze e e e e","x":540,"y":-155,"width":250,"height":75,"color":"#bda400"},
+		{"id":"e45cfb53cd849f65","type":"text","text":"ok","x":-300,"y":-280,"width":250,"height":60,"color":"#850000"},
+		{"id":"19866509c68bb7dc","type":"text","text":"# Hello\n- *Markdown*\n- ~~ok~~\n\n# First test don't know if will work","x":515,"y":0,"width":445,"height":320},
+		{"id":"d717fb62289b1011","type":"text","text":"into ->","x":120,"y":-155,"width":250,"height":63}
+	],
+	"edges":[
+		{"id":"e5c2ef70b16c771c","fromNode":"e45cfb53cd849f65","fromSide":"right","toNode":"d717fb62289b1011","toSide":"left"},
+		{"id":"b6e28fd3ce47c3ba","fromNode":"d717fb62289b1011","fromSide":"right","toNode":"e8de68a2dbc3b19a","toSide":"left","color":"#008558"},
+		{"id":"7660ca67525a2e1b","fromNode":"d717fb62289b1011","fromSide":"right","toNode":"19866509c68bb7dc","toSide":"left"},
+		{"id":"61f4afa3989df1c6","fromNode":"e8de68a2dbc3b19a","fromSide":"bottom","toNode":"19866509c68bb7dc","toSide":"top","color":"#973594"},
+		{"id":"c1e4fd27807bf2af","fromNode":"19866509c68bb7dc","fromSide":"bottom","toNode":"d717fb62289b1011","toSide":"bottom"},
+		{"id":"a87339fe3819deb5","fromNode":"d717fb62289b1011","fromSide":"top","toNode":"e8de68a2dbc3b19a","toSide":"top"},
+		{"id":"c1ed5dea2d82edf3","fromNode":"e8de68a2dbc3b19a","fromSide":"right","toNode":"19866509c68bb7dc","toSide":"right","toEnd":"none"}
+	]
+}
