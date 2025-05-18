@@ -1,10 +1,10 @@
 import { rectangle } from "./rect.js";
-import { link } from "./link.js";
+import { edge } from "./edge.js";
 import { text } from "./text.js";
 import { hoverHandler } from "./hover.js";
 
-export function loadData(linksGroup, nodesGroup) {
-  d3.json("/canvas/Untitled.canvas").then(data => {
+export function loadData(svg, edgesGroup, nodesGroup) {
+  d3.json("/canvas/tmp.canvas").then(data => {
 
     const node = nodesGroup.selectAll("g")
     .data(data.nodes)
@@ -22,9 +22,9 @@ export function loadData(linksGroup, nodesGroup) {
     
     text(node);
 
-    link(linksGroup, data);
+    edge(svg, edgesGroup, data);
 
-    hoverHandler(linksGroup, nodesGroup);
+    hoverHandler(edgesGroup, nodesGroup);
 
   });
 }

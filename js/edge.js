@@ -1,12 +1,31 @@
-// code for link + arrowhead
+// code for edge + arrowhead
 
-export function link(linksGroup, data) {
-  //link
-  linksGroup.selectAll("path.link")
+export function edge(svg, edgesGroup, data) {
+
+  //add arrows
+  const defs = svg.append("svg:defs");
+  data.edges.forEach(edge => {
+    defs.append("svg:marker")
+      .attr("id", `arrow-${edge.id}`)
+      .attr("viewBox", "0 0 10 10")
+      .attr("refX", 10)
+      .attr("refY", 5)
+      .attr("markerUnits", "strokeWidth")
+      .attr("markerWidth", 6)
+      .attr("markerHeight", 4)
+      .attr("orient", "auto")
+      .append("svg:path")
+      .attr("d", "M 0 0 L 10 5 L 0 10 z")
+      .style("stroke", edge.color || "#7e7e7e")
+      .style("fill", edge.color || "#7e7e7e");
+  });
+
+  //add edges
+  edgesGroup.selectAll("path.edge")
     .data(data.edges)
     .enter()
     .append("path")
-    .attr("class", "link")
+    .attr("class", "edge")
     .attr("id", d => d.id)
     .attr("d", d => {
       const sourceNode = getNodeById(data.nodes, d.fromNode);
@@ -18,16 +37,16 @@ export function link(linksGroup, data) {
     })
     .style("fill", "none")
     .style("stroke", d => d.color || "#7e7e7e")
-    .style("stroke-width", 2)
-    // no arrowhead when toEnd is "none", not working :(
-    .attr("marker-end", d => (d.toEnd === "none") ? null : "url(#arrowhead)");
+    .style("stroke-width", 3)
+    .attr("marker-end", d => (d.toEnd === "none") ? null : `url(#arrow-${d.id})`)
+    .attr("marker-start", d => (d.fromEnd === "none") ? null : `url(#arrow-${d.id})`)
 
-    //ghost link (easier to hover or select)
-    linksGroup.selectAll("path.link-ghost")
+  //ghost edges (easier to hover or select)
+  edgesGroup.selectAll("path.edge-ghost")
     .data(data.edges)
     .enter()
     .append("path")
-    .attr("class", "link-ghost")
+    .attr("class", "edge-ghost")
     .attr("d", d => {
       const sourceNode = getNodeById(data.nodes, d.fromNode);
       const targetNode = getNodeById(data.nodes, d.toNode);
@@ -40,44 +59,11 @@ export function link(linksGroup, data) {
     .style("stroke", d => d.color || "#7e7e7e")
     .style("opacity", 0)
     .style("stroke-width", 15)
-
-  //arrowhead
-  linksGroup.selectAll("path.arrowhead")
-    .data(data.edges)
-    .enter()
-    .append("path")
-    .attr("class", "arrowhead")
-    .attr("d", d => {
-      const targetNode = getNodeById(data.nodes, d.toNode);
-      const target = getAnchorPoint(targetNode, d.toSide);
-      const size = 10;
-      let path;
-
-      switch (d.toSide) {
-        case 'left':
-          path = `M${target.x},${target.y} l${-size},${-size / 2} l0,${size} Z`;
-          break;
-        case 'right':
-          path = `M${target.x},${target.y} l${size},${-size / 2} l0,${size} Z`;
-          break;
-        case 'top':
-          path = `M${target.x},${target.y} l${-size / 2},${-size} l${size},0 Z`;
-          break;
-        case 'bottom':
-          path = `M${target.x},${target.y} l${-size / 2},${size} l${size},0 Z`;
-          break;
-        default:
-          path = '';
-      }
-
-      return path;
-    })
-    .style("fill", d => d.color || "#7e7e7e");
 }
 
-// custom bezier, fixes link going in straight directions, adds "momentum" to the start and end connections
+// custom bezier, fixes edge going in straight directions, adds "momentum" to the start and end connections
 function generateCurvedPath(source, target, fromSide, toSide) {
-  const offset = 130; 
+  const offset = 90;
 
   const sourceOffset = { ...source };
   const targetOffset = { ...target };

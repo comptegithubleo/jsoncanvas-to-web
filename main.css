@@ -1,3 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 @font-face {
   font-family: 'Roboto';
   src: url("fonts/Inter-VariableFont_opsz\,wght.ttf") format("truetype"),
@@ -5,13 +17,39 @@
   font-weight: 100 900;
   font-style: normal;
 }
-body, html {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
 svg {
   width: 100vw;
   height: 100vh;
   background-color: #f9f9f9;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  width: 100%;
+  padding: 16px 20px;
+  position: fixed;
+}
+
+.logo {
+  font-family: 'Inter', sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  color: #9471c2;
+  min-width: 16%;
+}
+
+.github-icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.github-link:hover {
+  opacity: 0.8;
 }
