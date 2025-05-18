@@ -15,7 +15,7 @@ export function edge(svg, edgesGroup, data) {
       .attr("markerHeight", 4)
       .attr("orient", "auto")
       .append("svg:path")
-      .attr("d", "M 0 0 L 10 5 L 0 10 z")
+      .attr("d", "M 0 2 C 0 1 0 0 2 1 L 6 3 C 10 5 10 5 6 7 L 2 9 C 0 10 0 9 0 8 Z")
       .style("stroke", edge.color || "#7e7e7e")
       .style("fill", edge.color || "#7e7e7e");
   });
@@ -39,6 +39,7 @@ export function edge(svg, edgesGroup, data) {
     .style("stroke", d => d.color || "#7e7e7e")
     .style("stroke-width", 3)
     .attr("marker-end", d => (d.toEnd === "none") ? null : `url(#arrow-${d.id})`)
+    //todo : bidirectionnal
     .attr("marker-start", d => (d.fromEnd === "none") ? null : `url(#arrow-${d.id})`)
 
   //ghost edges (easier to hover or select)
