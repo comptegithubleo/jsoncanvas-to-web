@@ -1,5 +1,5 @@
 ## Description
-Export your Obsidian canvas in a web page.
+**View** your Obsidian canvas in a web page.
 Converts .canvas file (in [jsoncanvas](https://github.com/obsidianmd/jsoncanvas) format) to html/js, with [d3.js](https://github.com/d3/d3) for data-viz, [zero-md](https://github.com/zerodevx/zero-md) for markdown to HTML rendering.
 
 A small Golang server `main.go` is used to serve the website. Remove if needed.
@@ -17,6 +17,7 @@ A small Golang server `main.go` is used to serve the website. Remove if needed.
 - Start with everything centered
 - Side UI tutorial (pan + zoom instructions)
 - ...
+- Edit features
 
 ## Development
 Pull request are welcome for features or polishing, otherwise project is on standby.
